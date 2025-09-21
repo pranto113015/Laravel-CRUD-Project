@@ -21,6 +21,14 @@
         <a href="/create" class="bg-green-500 text-white rounded py-2 px-4">Add New Post</a>
        </div>
 
+
+       <!-- Success Message Section -->
+        @if(session('success'))
+          <div class="bg-green-200 text-green-800 p-4 rounded mb-4">
+              {{ session('success') }}
+          </div>
+        @endif
+
      </div>
 </body>
 </html>
