@@ -15,11 +15,17 @@ class PostController extends Controller
        //store data
         public function ourfilestore(Request $request){
 
+            $validated = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg',
+          ]);
+
             $post = new Post;
 
             $post->name = $request->name;
             $post->description = $request->description;
-            $post->image = $request->image;
+            $post->image = time(). '.' . $request->image->extension();
             $post->save();
 
             //redirect
