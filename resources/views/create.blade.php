@@ -23,18 +23,28 @@
 
 
             <div>
-                <form method="POST" action="{{route('store')}}">
+                <form method="POST" action="{{route('store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="flex flex-col gap-5">
                     <label for="">Name</label>
-                    <input type="text" name="name" class="border border-black">
+                    <input type="text" name="name" class="border border-black" value="{{old('name')}}">
+                    @error('name')
+                      <p class="text-red-500">{{$message}}</p>
+                    @enderror
                     <label for="">Description</label>
-                    <input type="text" name="description" class="border border-black">
+                    <input type="text" name="description" class="border border-black" value="{{old('description')}}">
+                    @error('description')
+                       <p class="text-red-500">{{$message}}</p>
+                    @enderror
                     <label for="">Select Image</label>
                     <input type="file" name="image">
+                    @error('image')
+                       <p class="text-red-500">{{$message}}</p>
+                    @enderror
                     <div>
                         <input type="submit" class="bg-blue-500 text-white rounded py-2 px-4" value="Submit">
                     </div>
+                    
                 </div>
                 </form>
             </div>
