@@ -10,8 +10,8 @@ class PostController extends Controller
         return view('create');
     }
 
-        public function ourfilestore(){
-            return 'test';
+        public function ourfilestore(Request $request){
+            return $request->all();
         }
 }
 
